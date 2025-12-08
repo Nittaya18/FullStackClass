@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>lab 01</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/lab01.css">
+    <style>
+       
+    </style>
+</head>
+ 
+<body>
+    <h1>Hello World from Fullstack Class!!</h1>
+    <h3>Register From!</h3>
+    <!-- <em style="color: w;">kuy rai kub</em> -->
+    <!-- <script src="" async defer></script> -->
+ 
+    <form method="post" action="/submit">
+        <label for="fname">First name:</label>
+        <input type="text" id="fname" name="fname"><br>
+        <label for="lname">Last name:</label>
+        <input type="text" id="lname" name="lname" required><br>
+        <br>
+        <label for="age">Enter your age:</label>
+        <input type="number" id="age" name="age" required><br>
+ 
+        <label for="gender">Enter your gender:</label>
+        <input type="radio" id="M gender" name="M gender" value="M">Male
+        <input type="radio" id="F gender" name="F gender" value="F">Female
+        <input type="radio" id="O gender" name="O gender" value="O">Other
+        <br>
+        <br>
+        <label for="country">Enter your address Country</label>
+        <select name="country" id="country">
+            <option value="Thailand">Thailand</option>
+            <option value="USA">USA</option>
+            <option value="England">England</option>
+            <option value="Japan">Japan</option>
+        </select>
+        <br>
+        <br>
+        <label for="marriedfrom">Are you married?</label><br>
+        <textarea id="marriedfrom" name="marriedfrom" rows="4" cols="50">
+        </textarea>
+        <br>
+        <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+        <label for="vehicle1"> I have a pen</label><br>
+        <input type="checkbox" id="vehicle2" name="vehicle2" value="Car">
+        <label for="vehicle2"> I have a apple</label><br>
+        <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat">
+        <label for="vehicle3"> I have CPU</label><br>
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+ 
+    <div>
+        This is a pong
+        <div id="d1">
+            This is a pong
+        </div>
+    </div>
+    <form style="margin-top: 10px;">
+        <table>
+            <tr>
+                <th>Company</th>
+                <th>Contact</th>
+                <th>Country</th>
+            </tr>
+            <tr>
+                <td>Alfreds Futterkiste</td>
+                <td>Maria Anders</td>
+                <td>Germany</td>
+            </tr>
+            <tr>
+                <td>Centro comercial Moctezuma</td>
+                <td>Francisco Chang</td>
+                <td>Mexico</td>
+            </tr>
+        </table>
+    </form>
+ 
+</body>
+ 
+</html>

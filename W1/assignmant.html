@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment01</title>
+    <script src="assignment.js"></script>
+</head>
+<body>
+    <div>
+        <fieldset>
+            <legend>
+                Profile
+            </legend>
+    <form>
+        <tr>
+            <td><label for="fname">Enter you name</label></td>
+            <td><input type="text" id="fname" name="fname"></td><br>
+        </tr>
+        <tr>
+            <td><label for="lname">Enter you name</label></td>
+            <td><input type="text" id="lname" name="lname"></td><br>
+        </tr>
+        <tr>
+            <td><label for="age">Enter you name</label></td>
+            <td><input type="number" id="age" name="age"></td><br>
+        </tr>
+        
+    </form>
+        </fieldset>
+    
+    </div>
+    <button onclick="updatePorfile()">Add User</button>
+    <div>
+        <table id="user-table">
+            <td>fname</td>
+            <td>lname</td>
+            <td>age</td>
+        </table>
+    </div>    
+</body>
+</html>

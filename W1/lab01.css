@@ -1,0 +1,40 @@
+/* body {
+    background-color: wheat;
+} */
+ 
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+ 
+div {
+    background-color: violet;
+    padding: 10px;
+    margin: 10px;
+    color: black;
+    width: 200px;
+    height: 200px;
+    border: 2px solid black;
+}
+ 
+#d1 {
+    width: 50px; height: 50px; background-color: red;
+}
+
+.outer-div {
+    background-color: aqua;
+    padding: 10px;
+    margin: 100px;
+    color: blueviolet;
+    width: 200px;
+    height: 200px;
+    border: 2px solid red;
+}
+
+input[type="taxt"] {
+    border: 2px solid rebeccapurple;
+    padding: 5px;
+    margin: 10px;
+}
