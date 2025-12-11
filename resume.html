@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Claudia Alvis</title>
+    <link rel="stylesheet" href="resume.css">
+    <script src="resume.js"></script>
+</head>
+<body>
+
+    <div class="resume-container">
+        <header class="resume-header">
+            <div class="header-text">
+                <h1>นิตยา สายราช(Nittaya Sairat)</h1>
+                <h2> </h2>
+            </div>
+        </header>
+
+        <div class="resume-body">
+            <aside class="left-col">
+                <section>
+                    <h3>ข้อมูลติดต่อ</h3>
+                    <p><strong>โทร:</strong> 0826125072</p>
+                    <p><strong>อีเมล:</strong> nittayasairat18@gmail.com</p>
+                    <p><strong>ที่อยู่:</strong> 40/1617 บ้านเอื้ออาทรเทพกุญชร34 ม.13 ต.คลองหนึ่ง อ.คลองหลวง จ.ปทุมธานี 12120</p>
+                </section>
+
+                <section>
+                    <h3>ข้อมูลส่วนตัว</h3>
+                    <p><strong>อายุ:</strong> 21 ปี</p>
+                    <p><strong>วันเกิด:</strong> 18 เมษายน 2547</p>
+                    <p><strong>เชื้อชาติ:</strong> ไทย <strong>ศาสนา:</strong> พุทธ</p>
+                </section>
+
+                <section>
+                    <h3>ประวัติการศึกษา</h3>
+                    <div class="edu-item">
+                        <p class="year">2565-2568</p>
+                        <p><strong>มหาวิทยาลัยเทคโนโลยีราชมงคลธัญบุรี</strong></p>
+                        <p>คณะวิทยาศาสตร์และเทคโนโลยี สาขาวิทยาการคอมพิวเตอร์</p>
+                        <p>GPA: 2.26</p>
+                    </div>
+                </section>
+            </aside>
+
+            <main class="right-col">
+                <section class="skills-section">
+                    <h3>ทักษะความสามารถ</h3>
+                    <ul class="skills-list">
+                        <li>มีความรู้ความเข้าใจในการเขียนโค้ดพื้นฐาน</li>
+                        <li>ใช้โปรแกรม Figma ได้ดี</li>
+                        <li>มีความรับผิดชอบต่องาน</li>
+                        <li>การจัดการโครงการและการทำงานร่วมกับทีม</li>
+                        <li>ความสามารถในการออกแบบเว็บ</li>
+                    </ul>
+                </section>
+
+                <section class="profile-summary">
+                    <h3>ประวัติส่วนตัว</h3>
+                    <p>
+                        จบจากคณะวิทยาศาสตร์และเทคโนโลยี สาขาวิทยาการคอมพิวเตอร์ มีประสบการณ์ในการออกแบบโมบายแอพและเว็บ
+                    </p>
+                </section>
+
+                <section class="work-experience">
+                    <h3>ประวัติการทำงาน</h3>
+                    <div class="job-item">
+                        <div class="job-header">
+                            <h4>Nectec</h4>
+                            <span class="job-year">2568</span>
+                        </div>
+                        <p class="job-role">ตำแหน่ง: นักศึกษาฝึกงาน</p>
+                        <ul>
+                            <li>เขียน Frontend หน้า Home แพลตฟอร์ม อับดุลติวเตอร์</li>
+                            <li>จัดทำ AI Landscape</li>
+                            <li>จัดทำโครงงานเกี่ยวกับ AI ที่รองรับภาษาไทย</li>
+                        </ul>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <hr class="divider">
+
+        <div class="contact-form-section">
+            <h3>แบบฟอร์มบันทึกผู้ติดต่อ (Assignment)</h3>
+            <fieldset>
+                <legend>กรอกข้อมูลผู้ติดต่อ</legend>
+                <form onsubmit="return false;">
+                    <div class="form-row">
+                        <input type="text" id="fname" placeholder="ชื่อ (Name)">
+                        <input type="text" id="lname" placeholder="สกุล (Last Name)">
+                    </div>
+                    <div class="form-row">
+                        <input type="tel" id="phone" placeholder="เบอร์โทร (Tel)">
+                        <input type="email" id="email" placeholder="อีเมล (Email)">
+                    </div>
+                    <button class="btn-submit" onclick="updateProfile()">เพิ่มข้อมูล (Add User)</button>
+                </form>
+            </fieldset>
+
+            <table id="user-table">
+                <thead>
+                    <tr>
+                        <th>ชื่อ</th>
+                        <th>สกุล</th>
+                        <th>เบอร์โทร</th>
+                        <th>อีเมล</th>
+                        <th>จัดการ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    </tbody>
+            </table>
+        </div>
+
+    </div>
+
+</body>
+</html>
