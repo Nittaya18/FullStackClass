@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique Fresh Market - 2025</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --luxury-gold: #c5a059;
+            --market-green: #2d5a27;
+            --glass-bg: rgba(255, 255, 255, 0.7);
+        }
+
+        body { 
+            background: radial-gradient(circle at top right, #fdfbfb 0%, #f1f3f1 100%);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #1d1d1f;
+            min-height: 100vh;
+        }
+
+        .hero-title {
+            font-weight: 800;
+            font-size: clamp(2rem, 5vw, 4rem);
+            letter-spacing: -0.03em;
+            background: linear-gradient(135deg, #2d5a27 0%, #c5a059 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 0.5rem;
+        }
+
+        .search-container {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.4);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            margin-bottom: 50px;
+        }
+
+        .form-select, .form-control {
+            border: 1px solid rgba(0,0,0,0.05) !important;
+            border-radius: 15px !important;
+            padding: 12px 20px !important;
+            font-size: 0.95rem;
+        }
+
+        .btn-market {
+            background: var(--market-green);
+            color: white;
+            border-radius: 15px;
+            padding: 10px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .btn-market:hover {
+            background: var(--luxury-gold);
+            transform: scale(1.05);
+            color: white;
+        }
+
+        .product-card { 
+            height: 100%; 
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1); 
+            border: none; 
+            border-radius: 30px; 
+            background: #ffffff;
+            overflow: hidden;
+            padding: 15px;
+        }
+
+        .product-card:hover { 
+            transform: translateY(-15px) scale(1.03); 
+            box-shadow: 0 40px 80px rgba(0,0,0,0.1) !important; 
+        }
+
+        .img-box {
+            background: #f8f9f8;
+            border-radius: 20px;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+
+        .card-img-top { 
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .card-img-top {
+            transform: scale(1.1);
+        }
+
+        .category-badge { 
+            font-size: 0.65rem; 
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--market-green);
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .card-title { 
+            font-weight: 700; 
+            font-size: 1rem; 
+            margin-bottom: 5px;
+        }
+
+        .price-tag { 
+            color: var(--luxury-gold); 
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container py-5">
+        <div class="text-center mb-5 mt-4">
+            <h1 class="hero-title">Boutique Market.</h1>
+            <p class="text-muted fw-light">Freshly selected daily masterpieces for your home.</p>
+        </div>
+
+        <div class="search-container">
+            <div class="row g-3 justify-content-center">
+                <div class="col-12 col-md-4">
+                    <select id="categoryFilter" class="form-select shadow-sm" onchange="handleFilter()">
+                        <option value="all">ทุกหมวดหมู่ (All Selections)</option>
+                        <option value="ผัก">ผักสด (Vegetables)</option>
+                        <option value="ผลไม้">ผลไม้ (Fruits)</option>
+                        <option value="ขนม">ขนมหวาน (Snacks)</option>
+                        <option value="เครื่องดื่ม">เครื่องดื่ม (Soft Drinks)</option>
+                    </select>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="input-group shadow-sm" style="border-radius: 15px; overflow: hidden;">
+                        <input type="text" id="searchInput" class="form-control" placeholder="ค้นหาความสดใหม่..." onkeyup="handleFilter()">
+                        <button class="btn btn-market px-4" type="button" onclick="handleFilter()">ค้นหา</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="productGrid" class="row g-4 row-cols-2 row-cols-md-2 row-cols-xl-6">
+            </div>
+        
+        <div id="noData" class="text-center py-5 d-none">
+            <h5 class="text-muted fw-light">ขออภัย ไม่พบสินค้าที่คุณต้องการในขณะนี้</h5>
+        </div>
+    </div>
+
+    <script>
+        const products = [
+            { id: 1, name: "สตรอว์เบอร์รี่ญี่ปุ่น", category: "ผลไม้", price: "850", img: "https://images.unsplash.com/photo-1464965911861-746a04b4bca6?q=80&w=600" },
+            { id: 2, name: "แอปเปิ้ลเอนวี่", category: "ผลไม้", price: "120", img: "https://fruitage.in.th/wp-content/uploads/2019/01/envy2.jpg" },
+            { id: 3, name: "กะหล่ำปลีม่วง", category: "ผัก", price: "95", img: "https://png.pngtree.com/png-vector/20201229/ourmid/pngtree-purple-cabbage-cut-in-half-png-image_2664730.jpg" },
+            { id: 4, name: "มะเขือเทศเชอรี่", category: "ผัก", price: "150", img: "https://img.pikbest.com/png-images/20250120/vibrant-red-cherry-tomatoes-in-midair-a-delightful-splash-of-color-and-freshness-_11421194.png!sw800" },
+            { id: 5, name: "มาการองฝรั่งเศส", category: "ขนม", price: "590", img: "https://png.pngtree.com/png-vector/20240803/ourlarge/pngtree-sweet-french-macaron-png-image_13352071.png" },
+            { id: 6, name: "ช็อกโกแลตทรัฟเฟิล", category: "ขนม", price: "1,200", img: "https://png.pngtree.com/png-vector/20250618/ourmid/pngtree-pyramid-of-assorted-chocolates-png-image_16522281.png" },
+            { id: 7, name: "น้ำเลมอนเนดสด", category: "เครื่องดื่ม", price: "135", img: "https://img.lovepik.com/png/20231028/Lemonade-glass-fruit-lemon-soda-summer-mojito_385969_wh860.png" },
+            { id: 8, name: "น้ำอัดลม Craft Cola", category: "เครื่องดื่ม", price: "85", img: "https://images.unsplash.com/photo-1554866585-cd94860890b7?q=80&w=600" },
+            { id: 9, name: "บลูเบอร์รี่สด", category: "ผลไม้", price: "350", img: "https://img.freepik.com/premium-vector/juicy-blueberries-stock-photo-bursting-with-flavor-transparent-png-white-background_1236927-12194.jpg" },
+            { id: 10, name: "แครอทออร์แกนิก", category: "ผัก", price: "65", img: "https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?q=80&w=600" },
+            { id: 11, name: "ครัวซองต์เนยแท้", category: "ขนม", price: "125", img: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?q=80&w=600" },
+            { id: 12, name: "น้ำโซดาพีช", category: "เครื่องดื่ม", price: "110", img: "https://img.freepik.com/premium-psd/peach-flavored-italian-soda_410516-109288.jpg" }
+        ];
+
+        function renderProducts(items) {
+            const grid = document.getElementById('productGrid');
+            const noData = document.getElementById('noData');
+            
+            if (items.length === 0) {
+                grid.innerHTML = '';
+                noData.classList.remove('d-none');
+                return;
+            }
+            
+            noData.classList.add('d-none');
+            grid.innerHTML = items.map(product => `
+                <div class="col">
+                    <div class="product-card shadow-sm">
+                        <div class="img-box">
+                            <img src="${product.img}" 
+                                 class="card-img-top" 
+                                 alt="${product.name}"
+                                 onerror="this.src='https://via.placeholder.com/300?text=Premium+Fresh'">
+                        </div>
+                        <div>
+                            <span class="category-badge">${product.category}</span>
+                            <h6 class="card-title text-truncate" title="${product.name}">${product.name}</h6>
+                            <p class="price-tag mb-0">฿${product.price}</p>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function handleFilter() {
+            const searchText = document.getElementById('searchInput').value.toLowerCase();
+            const selectedCategory = document.getElementById('categoryFilter').value;
+
+            const filtered = products.filter(p => {
+                const matchesName = p.name.toLowerCase().includes(searchText);
+                const matchesCategory = selectedCategory === 'all' || p.category === selectedCategory;
+                return matchesName && matchesCategory;
+            });
+
+            renderProducts(filtered);
+        }
+
+        renderProducts(products);
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
